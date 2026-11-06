@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<!-- FRONT PAGE. Edit the text between the tags freely. Published notes appear automatically. -->
+<!-- FRONT PAGE. Edit the text between the tags freely. Published notes appear automatically in the list. -->
 
 <div class="hero">
   <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
@@ -15,13 +15,13 @@ layout: default
   </svg>
   <div class="wrap">
     <h1>Independent equity research on Nordic companies</h1>
-    <a class="chip" href="#research">Latest: Terranor</a>
+    <a class="chip" href="#research">Now covering: Elkem</a>
   </div>
 </div>
 
 <section>
   <div class="wrap narrow">
-    <div class="head"><h2>Snefjellå Research</h2><p>Fundamental · Bottom-up · Nordic</p></div>
+    <div class="head"><h2 class="wm"><b>Snefjellå</b><span>Research</span></h2><p>Fundamental · Bottom-up · Nordic</p></div>
     <p class="intro">Deep analysis, one company at a time. Each note works through the business end to end, builds the valuation from the ground up and takes a clear position on the stock.</p>
     <p class="intro">The work is independent and written in my own time, with a focus on listed small and mid caps in Sweden, Norway, Denmark and Finland.</p>
   </div>
@@ -29,31 +29,31 @@ layout: default
 
 <section id="research">
   <div class="wrap">
-    <div class="head"><h2>Research</h2><p>Featured case</p></div>
+    <div class="head"><h2>Research</h2><p>Initiating coverage</p></div>
     <article class="case">
       <div class="case-body">
-        <div class="tag">Road operation &amp; maintenance</div>
-        <h3>Terranor: will the margins follow the growth?</h3>
-        <p>A newly listed Nordic road-maintenance specialist, carved out of NCC and turned around under Mutares. Sweden has raised its 2026–2037 road budget by 48%, and Terranor won 31% of the latest Swedish tender round.</p>
-        <p>Growth is not the hard part. Margins are. The case rests on whether the company can deliver the margin expansion it guided for 2026–2028, and how much of reported earnings turns into cash.</p>
+        <div class="tag">Silicon &amp; ferroalloys · Oslo Børs</div>
+        <h3>Elkem: what is left after Silicones?</h3>
+        <p>In April 2026 Elkem handed most of its Silicones division to its Chinese main owner, Bluestar, in exchange for Bluestar's 52.9% stake. No cash changed hands. The listed company is now owned entirely by minority investors.</p>
+        <p>What remains is a European producer of silicon, ferroalloys and carbon products, with heavy exposure to Chinese overcapacity and new EU trade measures. The note will test whether the simpler Elkem is worth more than the market thinks.</p>
         <span class="status">Note in progress</span>
       </div>
       <aside class="case-side">
-        <div class="meta"><b>TERNOR</b><br>Nasdaq First North, Stockholm<br>Listed June 2025</div>
+        <div class="meta"><b>ELK</b><br>Oslo Børs<br>Silicones exit closed 30 April 2026</div>
         <div class="kv">
-          <div><div class="n">+48%</div><div class="l">Swedish road O&amp;M budget, 2026–2037</div></div>
-          <div><div class="n">31%</div><div class="l">Share of awarded volume, 2026 Swedish tender season</div></div>
-          <div><div class="n">SE · DK · FI</div><div class="l">Operating markets</div></div>
+          <div><div class="n">52.9%</div><div class="l">Stake redeemed from Bluestar in exchange for Silicones</div></div>
+          <div><div class="n">3.3x</div><div class="l">Net interest-bearing debt / EBITDA, Q3 2026</div></div>
+          <div><div class="n">3</div><div class="l">Divisions: Silicon, Foundry Alloys, Carbon</div></div>
         </div>
       </aside>
     </article>
 
     <div class="cov" role="table" aria-label="Research notes">
       <div class="row h" role="row"><span role="columnheader">Note</span><span role="columnheader">Ticker</span><span role="columnheader" class="hide-s">Date</span><span role="columnheader" class="hide-s">Status</span></div>
+      <div class="row" role="row"><span class="co" role="cell">Elkem</span><span role="cell">ELK</span><span class="dim hide-s" role="cell">—</span><span class="st on hide-s" role="cell">In progress</span></div>
       {% for note in site.posts %}
-      <div class="row" role="row"><a class="co" role="cell" href="{{ note.url | relative_url }}">{{ note.title }}</a><span role="cell">{{ note.ticker }}</span><span class="dim hide-s" role="cell">{{ note.date | date: "%-d %b %Y" }}</span><span class="st on hide-s" role="cell">Published</span></div>
+      <div class="row" role="row"><a class="co" role="cell" href="{{ note.url | relative_url }}">{{ note.title | split: ':' | first }}</a><span role="cell">{{ note.ticker }}</span><span class="dim hide-s" role="cell">{{ note.date | date: "%-d %b %Y" }}</span><span class="st hide-s" role="cell">{{ note.status | default: "Published" }}</span></div>
       {% endfor %}
-      <div class="row" role="row"><span class="co" role="cell">Terranor Group</span><span role="cell">TERNOR</span><span class="dim hide-s" role="cell">—</span><span class="st hide-s" role="cell">In progress</span></div>
     </div>
   </div>
 </section>
@@ -74,5 +74,6 @@ layout: default
     <div class="head"><h2>About</h2></div>
     <p>I am a finance MSc candidate at BI Norwegian Business School.</p>
     <p>My background is in valuation, financial modelling and transaction work, with audit experience before that. That shapes how I read companies: start with the numbers that are hardest to fake.</p>
+    <a class="more" href="{{ '/about/' | relative_url }}">More about this site →</a>
   </div>
 </section>
