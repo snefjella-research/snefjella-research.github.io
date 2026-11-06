@@ -1,252 +1,78 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Snefjellå Research</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Mulish:ital,wght@0,300;0,400;0,600;1,300&display=swap">
-<style>
-  /* Layout: monochrome advisory-house look — grey header band, grayscale mountain hero, centred section heads, dark chips. Deliberately light-only. */
-  :root{
-    --bg:#FFFFFF;
-    --band:#F1F2F0;
-    --ink:#1E1F21;
-    --muted:#5E6266;
-    --line:#E2E3E0;
-    --chip:#2A2B2D;
-    --chip-ink:#FFFFFF;
-    --foot:#1F2022;
-    --foot-ink:#B7BABC;
-    --font-head:'Jost','Futura','Century Gothic',system-ui,sans-serif;
-    --font-body:'Mulish','Segoe UI',system-ui,-apple-system,sans-serif;
-    color-scheme:light;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:var(--font-body); font-weight:400; font-size:16px; line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit}
-  .wrap{
-    max-width:1080px; margin:0 auto;
-    padding-left:max(20px,env(safe-area-inset-left,0px));
-    padding-right:max(20px,env(safe-area-inset-right,0px));
-  }
-  .narrow{max-width:760px}
+---
+layout: default
+---
+<!-- FRONT PAGE. Edit the text between the tags freely. Published notes appear automatically. -->
 
-  /* Header band */
-  header{background:var(--band); border-bottom:1px solid var(--line); position:sticky; top:env(safe-area-inset-top,0px); z-index:5}
-  body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--band)}
-  .bar{display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; padding-block:18px}
-  .mark{display:flex; align-items:baseline; gap:10px; text-decoration:none; min-width:0}
-  .mark b{font-family:var(--font-head); font-weight:600; font-size:26px; letter-spacing:.06em; text-transform:uppercase; line-height:1}
-  .mark span{font-family:var(--font-head); font-weight:400; font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:var(--muted)}
-  nav{display:flex; gap:26px; flex-wrap:wrap}
-  nav a{font-family:var(--font-head); font-size:13px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; color:var(--muted); padding-block:4px; border-bottom:1px solid transparent}
-  nav a:hover{color:var(--ink); border-color:var(--ink)}
-
-  /* Hero */
-  .hero{position:relative; overflow:hidden; background:linear-gradient(180deg,#ECEDEB 0%,#D9DBD9 55%,#C9CBC9 100%)}
-  .hero svg{position:absolute; inset:auto 0 0 0; width:100%; height:78%; display:block}
-  .hero .wrap{position:relative; min-height:440px; display:flex; flex-direction:column; align-items:flex-end; text-align:right; padding-block:64px 150px}
-  .hero h1{font-family:var(--font-head); font-weight:500; text-transform:uppercase; letter-spacing:.04em; font-size:clamp(26px,4.2vw,40px); line-height:1.2; margin:0; max-width:20ch; text-wrap:balance}
-  .chip{display:inline-block; margin-top:18px; background:var(--chip); color:var(--chip-ink); font-family:var(--font-head); font-size:13px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; padding:9px 22px; border:0; cursor:pointer}
-  .chip:hover{background:#000}
-
-  /* Sections */
-  section{padding-block:76px}
-  section + section{border-top:1px solid var(--line)}
-  .head{text-align:center; margin-bottom:34px}
-  .head h2{font-family:var(--font-head); font-weight:600; font-size:clamp(26px,3.4vw,34px); letter-spacing:.06em; text-transform:uppercase; margin:0; line-height:1.15}
-  .head p{margin:8px 0 0; font-family:var(--font-head); font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted)}
-  .intro{text-align:center; font-weight:300; font-size:clamp(17px,2vw,19px); color:#3B3D40; margin:0 auto; max-width:62ch}
-  .intro + .intro{margin-top:16px}
-
-  /* Featured case */
-  .case{border:1px solid var(--line); display:grid; grid-template-columns:1.25fr 1fr}
-  .case-body{padding:clamp(24px,4vw,40px); min-width:0}
-  .case-side{background:var(--band); padding:clamp(24px,4vw,40px); border-left:1px solid var(--line); display:flex; flex-direction:column; gap:22px; min-width:0}
-  .tag{font-family:var(--font-head); font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
-  .case h3{font-family:var(--font-head); font-weight:500; font-size:clamp(22px,2.6vw,28px); line-height:1.25; margin:10px 0 16px; text-wrap:balance}
-  .case p{margin:0 0 12px; font-weight:400; color:#35373A}
-  .status{display:inline-block; margin-top:8px; font-family:var(--font-head); font-size:12px; letter-spacing:.16em; text-transform:uppercase; border:1px solid var(--ink); padding:5px 12px}
-  .kv{display:grid; grid-template-columns:1fr; gap:18px}
-  .kv div{border-bottom:1px solid var(--line); padding-bottom:14px}
-  .kv div:last-child{border-bottom:0; padding-bottom:0}
-  .kv .n{font-family:var(--font-head); font-weight:500; font-size:30px; line-height:1; font-variant-numeric:tabular-nums}
-  .kv .l{font-size:13.5px; color:var(--muted); margin-top:6px}
-  .meta{font-size:13.5px; color:var(--muted); line-height:1.6}
-  .meta b{font-family:var(--font-head); font-weight:600; letter-spacing:.08em; color:var(--ink)}
-
-  /* Coverage */
-  .cov{margin-top:44px; border-top:1px solid var(--ink)}
-  .row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:14px; align-items:center; padding:16px 4px; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums}
-  .row.h{font-family:var(--font-head); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-block:12px}
-  .row .co{font-family:var(--font-head); font-weight:500; font-size:17px; letter-spacing:.02em}
-  .row .dim{color:var(--muted)}
-  .row .st{font-family:var(--font-head); font-size:12px; letter-spacing:.14em; text-transform:uppercase}
-  .row .st.on::before{content:""; display:inline-block; width:7px; height:7px; background:var(--ink); border-radius:50%; margin-right:8px; vertical-align:1px}
-
-  /* Approach */
-  .three{display:grid; grid-template-columns:repeat(3,1fr); gap:40px}
-  .three > div{text-align:center; min-width:0}
-  .three .num{font-family:var(--font-head); font-size:13px; letter-spacing:.2em; color:var(--muted)}
-  .three h3{font-family:var(--font-head); font-weight:600; font-size:17px; letter-spacing:.12em; text-transform:uppercase; margin:8px 0 10px}
-  .three p{margin:0; font-weight:300; color:#3B3D40}
-
-  /* About / contact */
-  .about{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
-  .about p{margin:0 0 14px; font-weight:300; font-size:17px; color:#3B3D40}
-  .contact{display:flex; flex-direction:column; gap:14px; align-items:flex-start}
-  .email-row{display:flex; flex-wrap:wrap; gap:0; max-width:100%}
-  .email{font-size:15px; border:1px solid var(--line); border-right:0; padding:9px 14px; user-select:all; min-width:0; overflow-wrap:anywhere; background:var(--bg)}
-  .email-row .chip{margin-top:0}
-  .lk{font-family:var(--font-head); font-size:13px; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:2px}
-  .hint{font-size:12.5px; color:var(--muted)}
-
-  footer{background:var(--foot); color:var(--foot-ink)}
-  footer .wrap{padding-block:40px; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap}
-  footer .fm{font-family:var(--font-head); font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#FFFFFF}
-  footer p{margin:0; font-size:13px; line-height:1.7; max-width:56ch}
-
-  :focus-visible{outline:2px solid var(--ink); outline-offset:3px}
-  @media (max-width:820px){
-    .case{grid-template-columns:1fr}
-    .case-side{border-left:0; border-top:1px solid var(--line)}
-    .three{grid-template-columns:1fr; gap:34px}
-    .about{grid-template-columns:1fr; gap:28px}
-  }
-  @media (max-width:560px){
-    .hero .wrap{align-items:flex-start; text-align:left; min-height:380px; padding-block:44px 140px}
-    .row{grid-template-columns:1.4fr 1fr}
-    .row .hide-s{display:none}
-    nav{gap:18px}
-    .mark b{font-size:22px}
-    section{padding-block:56px}
-  }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="wrap bar">
-    <a class="mark" href="#top" aria-label="Snefjellå Research, home"><b>Snefjellå</b><span>Research</span></a>
-    <nav aria-label="Main">
-      <a href="#research">Research</a>
-      <a href="#approach">Approach</a>
-      <a href="#about">About</a>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-  <div class="hero">
-    <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <polygon fill="#B9BCBD" points="0,250 120,190 230,225 360,120 470,185 560,150 690,60 800,150 900,115 1030,175 1150,95 1270,160 1440,120 1440,420 0,420"/>
-      <polygon fill="#FFFFFF" opacity=".85" points="690,60 652,100 676,94 690,108 706,92 728,98"/>
-      <polygon fill="#FFFFFF" opacity=".8" points="360,120 330,146 350,142 362,154 375,140 392,146"/>
-      <polygon fill="#FFFFFF" opacity=".8" points="1150,95 1118,122 1140,118 1152,130 1166,116 1184,121"/>
-      <polygon fill="#909496" points="0,300 150,230 260,270 400,200 520,255 640,210 760,265 880,195 1000,250 1120,215 1260,265 1440,215 1440,420 0,420"/>
-      <polygon fill="#65696C" points="0,345 180,295 320,330 470,280 610,325 760,290 900,335 1050,295 1210,330 1340,300 1440,320 1440,420 0,420"/>
-      <polygon fill="#3B3E41" points="0,392 220,360 420,385 640,355 860,388 1080,362 1280,386 1440,368 1440,420 0,420"/>
-    </svg>
-    <div class="wrap">
-      <h1>Independent equity research on Nordic companies</h1>
-      <a class="chip" href="#research">Latest: Terranor</a>
-    </div>
-  </div>
-
-  <section>
-    <div class="wrap narrow">
-      <div class="head"><h2>Snefjellå Research</h2><p>Fundamental · Bottom-up · Nordic</p></div>
-      <p class="intro">Deep analysis, one company at a time. Each note works through the business end to end, builds the valuation from the ground up and takes a clear position on the stock.</p>
-      <p class="intro">The work is independent and written in my own time, with a focus on listed small and mid caps in Sweden, Norway, Denmark and Finland.</p>
-    </div>
-  </section>
-
-  <section id="research">
-    <div class="wrap">
-      <div class="head"><h2>Research</h2><p>Featured case</p></div>
-      <article class="case">
-        <div class="case-body">
-          <div class="tag">Road operation &amp; maintenance</div>
-          <h3>Terranor: will the margins follow the growth?</h3>
-          <p>A newly listed Nordic road-maintenance specialist, carved out of NCC and turned around under Mutares. Sweden has raised its 2026–2037 road budget by 48%, and Terranor won 31% of the latest Swedish tender round.</p>
-          <p>Growth is not the hard part. Margins are. The case rests on whether the company can deliver the margin expansion it guided for 2026–2028, and how much of reported earnings turns into cash.</p>
-          <span class="status">Note in progress</span>
-        </div>
-        <aside class="case-side">
-          <div class="meta"><b>TERNOR</b><br>Nasdaq First North, Stockholm<br>Listed June 2025</div>
-          <div class="kv">
-            <div><div class="n">+48%</div><div class="l">Swedish road O&amp;M budget, 2026–2037</div></div>
-            <div><div class="n">31%</div><div class="l">Share of awarded volume, 2026 Swedish tender season</div></div>
-            <div><div class="n">SE · DK · FI</div><div class="l">Operating markets</div></div>
-          </div>
-        </aside>
-      </article>
-
-      <div class="cov" role="table" aria-label="Coverage">
-        <div class="row h" role="row"><span role="columnheader">Company</span><span role="columnheader">Ticker</span><span role="columnheader" class="hide-s">Market</span><span role="columnheader" class="hide-s">Status</span></div>
-        <div class="row" role="row"><span class="co" role="cell">Terranor Group</span><span role="cell">TERNOR</span><span class="dim hide-s" role="cell">First North SE</span><span class="st on hide-s" role="cell">In progress</span></div>
-        <div class="row" role="row"><span class="co dim" role="cell">Next company</span><span class="dim" role="cell">—</span><span class="dim hide-s" role="cell">—</span><span class="st dim hide-s" role="cell">Selecting</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="approach">
-    <div class="wrap">
-      <div class="head"><h2>Approach</h2><p>How each note is built</p></div>
-      <div class="three">
-        <div><div class="num">01</div><h3>Business first</h3><p>How the company actually earns money, before any model is opened. Customers, contracts, seasonality and competition.</p></div>
-        <div><div class="num">02</div><h3>Built bottom-up</h3><p>Revenue from order book, win rates and market growth. Earnings checked against cash flow, not taken at face value.</p></div>
-        <div><div class="num">03</div><h3>One thesis</h3><p>Every note resolves to the question that decides the stock, tested across a bear, base and bull case.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap about">
-      <div>
-        <div class="head" style="text-align:left;margin-bottom:20px"><h2>About</h2><p>The author</p></div>
-        <p>Snefjellå Research is written by Jon Isak Snefjellå Grønås, a finance MSc candidate at BI Norwegian Business School.</p>
-        <p>My background is in valuation, financial modelling and transaction work, with audit experience before that. That shapes how I read companies: start with the numbers that are hardest to fake.</p>
-      </div>
-      <div class="contact">
-        <div class="head" style="text-align:left;margin-bottom:6px"><h2>Contact</h2><p>Feedback welcome</p></div>
-        <div class="email-row">
-          <span class="email" id="email">din.epost@domene.no</span>
-          <button class="chip" id="copy" type="button">Copy</button>
-        </div>
-        <a class="lk" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <div class="hint">Placeholder: swap in your real email and LinkedIn URL.</div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
+<div class="hero">
+  <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <polygon fill="#B9BCBD" points="0,250 120,190 230,225 360,120 470,185 560,150 690,60 800,150 900,115 1030,175 1150,95 1270,160 1440,120 1440,420 0,420"/>
+    <polygon fill="#FFFFFF" opacity=".9" points="690,60 652,100 676,94 690,108 706,92 728,98"/>
+    <polygon fill="#FFFFFF" opacity=".85" points="360,120 330,146 350,142 362,154 375,140 392,146"/>
+    <polygon fill="#FFFFFF" opacity=".85" points="1150,95 1118,122 1140,118 1152,130 1166,116 1184,121"/>
+    <polygon fill="#909496" points="0,300 150,230 260,270 400,200 520,255 640,210 760,265 880,195 1000,250 1120,215 1260,265 1440,215 1440,420 0,420"/>
+    <polygon fill="#65696C" points="0,345 180,295 320,330 470,280 610,325 760,290 900,335 1050,295 1210,330 1340,300 1440,320 1440,420 0,420"/>
+    <polygon fill="#3B3E41" points="0,392 220,360 420,385 640,355 860,388 1080,362 1280,386 1440,368 1440,420 0,420"/>
+  </svg>
   <div class="wrap">
-    <div class="fm">Snefjellå Research</div>
-    <p>Independent research published in a personal capacity. Views are my own and not investment advice. © 2026 Jon Isak Snefjellå Grønås</p>
+    <h1>Independent equity research on Nordic companies</h1>
+    <a class="chip" href="#research">Latest: Terranor</a>
   </div>
-</footer>
+</div>
 
-<script>
-  (function(){
-    var btn=document.getElementById('copy'), em=document.getElementById('email');
-    if(!btn||!em)return;
-    btn.addEventListener('click',function(){
-      var t=em.textContent.trim();
-      function ok(){var o=btn.textContent;btn.textContent='Copied';setTimeout(function(){btn.textContent=o;},1400);}
-      function select(){try{var r=document.createRange();r.selectNodeContents(em);var s=window.getSelection();s.removeAllRanges();s.addRange(r);ok();}catch(e){}}
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(select);}else{select();}
-    });
-  })();
-</script>
-</body>
-</html>
+<section>
+  <div class="wrap narrow">
+    <div class="head"><h2>Snefjellå Research</h2><p>Fundamental · Bottom-up · Nordic</p></div>
+    <p class="intro">Deep analysis, one company at a time. Each note works through the business end to end, builds the valuation from the ground up and takes a clear position on the stock.</p>
+    <p class="intro">The work is independent and written in my own time, with a focus on listed small and mid caps in Sweden, Norway, Denmark and Finland.</p>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="head"><h2>Research</h2><p>Featured case</p></div>
+    <article class="case">
+      <div class="case-body">
+        <div class="tag">Road operation &amp; maintenance</div>
+        <h3>Terranor: will the margins follow the growth?</h3>
+        <p>A newly listed Nordic road-maintenance specialist, carved out of NCC and turned around under Mutares. Sweden has raised its 2026–2037 road budget by 48%, and Terranor won 31% of the latest Swedish tender round.</p>
+        <p>Growth is not the hard part. Margins are. The case rests on whether the company can deliver the margin expansion it guided for 2026–2028, and how much of reported earnings turns into cash.</p>
+        <span class="status">Note in progress</span>
+      </div>
+      <aside class="case-side">
+        <div class="meta"><b>TERNOR</b><br>Nasdaq First North, Stockholm<br>Listed June 2025</div>
+        <div class="kv">
+          <div><div class="n">+48%</div><div class="l">Swedish road O&amp;M budget, 2026–2037</div></div>
+          <div><div class="n">31%</div><div class="l">Share of awarded volume, 2026 Swedish tender season</div></div>
+          <div><div class="n">SE · DK · FI</div><div class="l">Operating markets</div></div>
+        </div>
+      </aside>
+    </article>
+
+    <div class="cov" role="table" aria-label="Research notes">
+      <div class="row h" role="row"><span role="columnheader">Note</span><span role="columnheader">Ticker</span><span role="columnheader" class="hide-s">Date</span><span role="columnheader" class="hide-s">Status</span></div>
+      {% for note in site.posts %}
+      <div class="row" role="row"><a class="co" role="cell" href="{{ note.url | relative_url }}">{{ note.title }}</a><span role="cell">{{ note.ticker }}</span><span class="dim hide-s" role="cell">{{ note.date | date: "%-d %b %Y" }}</span><span class="st on hide-s" role="cell">Published</span></div>
+      {% endfor %}
+      <div class="row" role="row"><span class="co" role="cell">Terranor Group</span><span role="cell">TERNOR</span><span class="dim hide-s" role="cell">—</span><span class="st hide-s" role="cell">In progress</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="head"><h2>Approach</h2><p>How each note is built</p></div>
+    <div class="three">
+      <div><div class="num">01</div><h3>Business first</h3><p>How the company actually earns money, before any model is opened. Customers, contracts, seasonality and competition.</p></div>
+      <div><div class="num">02</div><h3>Built bottom-up</h3><p>Revenue from order book, win rates and market growth. Earnings checked against cash flow, not taken at face value.</p></div>
+      <div><div class="num">03</div><h3>One thesis</h3><p>Every note resolves to the question that decides the stock, tested across a bear, base and bull case.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="head"><h2>About</h2></div>
+    <p>I am a finance MSc candidate at BI Norwegian Business School.</p>
+    <p>My background is in valuation, financial modelling and transaction work, with audit experience before that. That shapes how I read companies: start with the numbers that are hardest to fake.</p>
+  </div>
+</section>
