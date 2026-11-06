@@ -1,23 +1,38 @@
 ---
 layout: note
 published: true
-status: Sample
 title: "Cedergrenska: a cheap compounder with a political price tag"
 subtitle: "The school group keeps delivering. Six months before the Swedish election, the share price is set less by the next report than by the next government."
 ticker: CEDER
 sector: Independent schools
 share_price: "36.20"
 fair_value: "54"
+last_updated: 2026-03-20
+glance:
+  - label: Share price
+    value: SEK 36.20
+  - label: Fair value (base)
+    value: SEK 54
+  - label: Upside
+    value: "+50%"
+  - label: Bear / bull
+    value: SEK 26 / 86
+  - label: Market cap
+    value: SEK 460m
+  - label: EV
+    value: SEK 540m
+  - label: EV/EBITA LTM (K3)
+    value: 4.4x
+  - label: Next event
+    value: Election, 13 Sep
 ---
-
-> **Sample note.** This note shows the format used on Snefjellå Research. It was prepared in November 2026 using only information available on the date shown. Figures are taken from company reports, and the valuation is illustrative.
 
 ## Summary
 
-Cedergrenska runs independent schools in Sweden and grows by buying smaller ones. The operating record is strong, the balance sheet is light and insiders own about a third of the company. After falling from SEK 42 at the end of February to SEK 36, the shares trade at around 4.4x EV/EBITA.
+Cedergrenska runs independent schools in Sweden and grows by buying smaller ones. The operating record is strong, the balance sheet is light and the two co-founders own 31% of the shares. After falling from SEK 42 at the end of February to SEK 36, the shares trade at around 4.4x EV/EBITA.
 
 - **The business is working.** Sales rose 52% in the first half of 2025/26, mostly through acquisitions, and the company raised its full-year margin forecast to at least 7%.
-- **The discount is political.** In January the government proposed tighter rules for independent schools. On 13 March the Liberals and the Sweden Democrats agreed to phase out the profit motive in schools, and the shares fell almost 5% that day. The election is on 13 September 2026.
+- **The discount is political.** A government inquiry has proposed limits on profit distribution from schools. On 13 March the Liberals and the Sweden Democrats agreed to phase out the profit motive in schools, and the shares fell almost 5% that day. The election is on 13 September 2026.
 - **The headline multiple flatters the stock somewhat.** Cedergrenska reports under K3, without lease accounting, while listed peers report under IFRS. The multiples are not directly comparable.
 - **What would make us wrong:** A dividend ban or a hard cap on profits would remove most of the value for shareholders, regardless of how well the schools are run.
 
@@ -47,9 +62,9 @@ The fiscal year runs from July to June. LTM figures are our calculation. Operati
 
 Swedish municipalities pay a fixed amount per pupil (*skolpeng*) to every school, public or independent. An independent school earns a profit if it delivers education for less than that amount. Scale matters: shared administration, purchasing, IT and teacher training spread across many schools lower the cost per pupil.
 
-Cedergrenska runs preschools, compulsory schools, upper secondary schools (*gymnasium*) and adult education. Upper secondary is the largest part, with about 6,250 of its 10,500 students. Close to 20% of Swedish pupils attend independent schools, so Cedergrenska's share of the total market is still well under 1%.
+Cedergrenska runs preschools, compulsory schools, upper secondary schools (*gymnasium*) and adult education. Upper secondary is the largest part, with about 6,250 of its 10,500 students. About 16% of compulsory school pupils and 32% of upper secondary students attend independent schools, so Cedergrenska's share of the market is still small.
 
-The growth model is acquisitive. The company buys single schools or small school groups, often from founders without a successor, and lifts their margins over two to three years by moving them onto the group platform. Recent deals include Aprendere Skolor, Skärgårdsgymnasiet in Norrtälje and, from 1 December 2025, Christinaskolan and Christinagymnasiet on Lidingö, with about SEK 90m of annual sales. Management expects the new rules to hit smaller operators hardest and to speed up consolidation, which would give Cedergrenska more to buy.
+The growth model is acquisitive. The company buys single schools or small school groups and lifts their margins by moving them onto the group platform: shared administration, purchasing and support functions. Recent deals include Aprendere Skolor, Skärgårdsgymnasiet in Norrtälje and, from 1 December 2025, Christinaskolan and Christinagymnasiet on Lidingö, with about SEK 90m of annual sales. Management expects the new rules to hit smaller operators hardest and to speed up consolidation, which would give Cedergrenska more to buy.
 
 ## Earnings quality
 
@@ -65,11 +80,11 @@ Cash conversion is solid. LTM operating cash flow was 76% of EBITDA, although th
 
 This is the variable that decides the stock.
 
-- **January 2026:** The government proposed tighter rules for independent schools. They include a five-year ban on profit distribution for new schools and changes of ownership, exclusion from quality grants for schools that pay dividends or have quality breaches, and new transparency requirements.
+- **April 2025:** A government inquiry proposed bans on profit distribution in four cases: for five years after a new school opens, after a major change of ownership, after established quality failures, and while a school receives state grants to raise quality. A bill is expected in 2026.
 - **13 March 2026:** The Liberals and the Sweden Democrats agreed to phase out the profit motive in schools. AcadeMedia fell 3.6%, and Cedergrenska fell from SEK 39.20 to SEK 37.40.
 - **13 September 2026:** The general election. The Social Democrats have long wanted to stop profit extraction from schools.
 
-The outcomes range from the January proposals becoming law, through a cap on dividends or profit for new and acquired schools, to a full ban on profit extraction. Each one changes what a shareholder can get out of the business, even if the schools themselves run exactly as before. The five-year distribution ban on changes of ownership also matters directly for an acquisitive model.
+The outcomes range from the inquiry's proposals becoming law, through a cap on dividends or profit for new and acquired schools, to a full ban on profit extraction. Each one changes what a shareholder can get out of the business, even if the schools themselves run exactly as before. A distribution ban after changes of ownership would also matter directly for an acquisitive model.
 
 ## Valuation
 
@@ -80,7 +95,7 @@ At SEK 36.20 per share (20 March 2026) and 12.66 million shares, the market valu
 | EV/EBITA (K3) | 4.4x |
 | P/E, goodwill-adjusted | 5.5x |
 
-We value the shares on 2027/28 earnings, discounted back at 12% and including expected dividends. The multiples are deliberately below the roughly 11x EBIT at which AcadeMedia and Tellus trade, to reflect the accounting difference and the political risk.
+We value the shares on 2027/28 earnings, discounted back at 12% and including expected dividends. The multiples are deliberately conservative, to reflect the accounting difference to IFRS peers and the political risk.
 
 | Scenario | Politics | Sales 2027/28 | EBITA margin | EV/EBITA | Value per share (SEK) | vs. today |
 |---|---|---|---|---|---|---|
@@ -93,10 +108,10 @@ The asymmetry is the point. In the base case the stock is cheap for a business g
 ## Risks
 
 - **Profit extraction ban:** the main risk. It would hit dividends and the logic of the acquisition model.
-- **Regulatory cost:** new transparency and quality rules add administrative cost and could squeeze margins at the low end of the 6–8% target.
+- **Regulatory cost:** new quality and reporting rules add administrative cost and could squeeze margins at the low end of the 6–8% target.
 - **Acquisition execution:** buying schools at good prices and integrating them is the growth engine. A poorly priced deal or a school with quality problems could damage both numbers and reputation.
 - **Demographics:** smaller cohorts of children will reduce demand for preschool and compulsory school places in parts of Sweden over the coming decade.
-- **Key people:** the two co-founders still own about 30% between them. A change in their involvement would matter.
+- **Key people:** the two co-founders, Niklas Pålsson and Håkan Söderström, own 31% between them. A change in their involvement would matter.
 
 ## Catalysts
 
@@ -111,13 +126,14 @@ Cedergrenska is a well-run business priced as if it might not be allowed to keep
 
 ---
 
-*This note is published in a personal capacity and is not investment advice.*
+*This write-up is published in a personal capacity and is not investment advice.*
 
 **Sources**
 
 - Cedergrenska, Year-end report 2024/25 (28 August 2025)
 - Cedergrenska, Interim report October–December 2025 (February 2026)
 - Altinget, "Skolkoncerner faller på börsen efter L och SD:s uppgörelse" (16 March 2026)
-- TheOracleOfOslo, "Cedergrenska (CEDER) – A Fast-Growing, Best-in-Class Serial Acquirer Trading at a Double-Digit Earnings Yield" (26 February 2026)
-- Finansavisen, "Eks-analytiker: Kan ha funnet gull i svensk small cap" (18 December 2025)
+- Cedergrenska, "Huvudägarna genomför mindre aktieförsäljning för att bredda ägarbasen" (24 November 2025)
+- Realtid, "Regeringen föreslår femårigt vinstförbud för nya friskolor" (5 April 2025)
+- Almega Utbildning, Fakta om friskolor (2025)
 - Share price: stockanalysis.com (20 March 2026)
