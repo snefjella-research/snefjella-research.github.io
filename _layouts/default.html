@@ -26,9 +26,15 @@
   header{background:var(--band); border-bottom:1px solid var(--line); position:sticky; top:env(safe-area-inset-top,0px); z-index:5}
   body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--band)}
   .bar{display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; padding-block:18px}
-  .mark{display:flex; align-items:baseline; gap:10px; text-decoration:none; min-width:0}
-  .mark b{font-family:var(--font-head); font-weight:600; font-size:26px; letter-spacing:.06em; text-transform:uppercase; line-height:1}
-  .mark span{font-family:var(--font-head); font-weight:400; font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:var(--muted)}
+  /* Wordmark: used everywhere the name appears (header, front page, footer) */
+  .mark, .wm{display:flex; align-items:baseline; gap:10px; text-decoration:none; min-width:0; margin:0; flex-wrap:wrap}
+  .wm{justify-content:center}
+  .mark b, .wm b{font-family:var(--font-head); font-weight:600; font-size:26px; letter-spacing:.06em; text-transform:uppercase; line-height:1}
+  .mark span, .wm span{font-family:var(--font-head); font-weight:400; font-size:13px; letter-spacing:.32em; text-transform:uppercase; color:var(--muted)}
+  footer .wm{justify-content:flex-start}
+  footer .wm b{color:#FFFFFF}
+  footer .wm span{color:var(--foot-ink)}
+  section, [id]{scroll-margin-top:84px}
   nav{display:flex; gap:26px; flex-wrap:wrap}
   nav a{font-family:var(--font-head); font-size:13px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; color:var(--muted); padding-block:4px; border-bottom:1px solid transparent}
   nav a:hover{color:var(--ink); border-color:var(--ink)}
@@ -79,6 +85,8 @@
   .three h3{font-family:var(--font-head); font-weight:600; font-size:17px; letter-spacing:.12em; text-transform:uppercase; margin:8px 0 10px}
   .three p{margin:0; font-weight:300; color:#3B3D40}
 
+  .more{display:inline-block; margin-top:10px; font-family:var(--font-head); font-size:13px; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid var(--ink)}
+  .about{text-align:center}
   .about p{text-align:center; font-weight:300; font-size:18px; color:#3B3D40; margin:0 auto 14px; max-width:60ch}
 
   /* Research notes (pages made from _posts/*.md) */
@@ -102,7 +110,6 @@
 
   footer{background:var(--foot); color:var(--foot-ink)}
   footer .wrap{padding-block:40px; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap}
-  footer .fm{font-family:var(--font-head); font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#FFFFFF}
   footer p{margin:0; font-size:13px; line-height:1.7; max-width:56ch}
 
   :focus-visible{outline:2px solid var(--ink); outline-offset:3px}
@@ -117,7 +124,7 @@
     .row{grid-template-columns:1.4fr 1fr}
     .row .hide-s{display:none}
     nav{gap:18px}
-    .mark b{font-size:22px}
+    .mark b, .wm b{font-size:22px}
     section{padding-block:56px}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -131,7 +138,7 @@
     <nav aria-label="Main">
       <a href="{{ '/#research' | relative_url }}">Research</a>
       <a href="{{ '/#approach' | relative_url }}">Approach</a>
-      <a href="{{ '/#about' | relative_url }}">About</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
     </nav>
   </div>
 </header>
@@ -142,10 +149,31 @@
 
 <footer>
   <div class="wrap">
-    <div class="fm">Snefjellå Research</div>
+    <div class="wm"><b>Snefjellå</b><span>Research</span></div>
     <p>Independent research published in a personal capacity. Views are my own and not investment advice. © {{ 'now' | date: '%Y' }} Snefjellå Research</p>
   </div>
 </footer>
+
+<script>
+  /* Always open at the top; menu links scroll without leaving #section in the address */
+  (function(){
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href*="#"]'); if (!a) return;
+      var u = new URL(a.href, location.href);
+      if (u.pathname !== location.pathname) return;
+      var el = document.getElementById(u.hash.slice(1)); if (!el) return;
+      e.preventDefault(); el.scrollIntoView({behavior:'smooth'});
+    });
+    window.addEventListener('load', function(){
+      if (location.hash) {
+        var el = document.getElementById(location.hash.slice(1));
+        if (el) el.scrollIntoView();
+        history.replaceState(null, '', location.pathname + location.search);
+      } else { window.scrollTo(0, 0); }
+    });
+  })();
+</script>
 
 </body>
 </html>
