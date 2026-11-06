@@ -72,7 +72,7 @@
   .meta b{font-family:var(--font-head); font-weight:600; letter-spacing:.08em; color:var(--ink)}
 
   .cov{margin-top:44px; border-top:1px solid var(--ink)}
-  .row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:14px; align-items:center; padding:16px 4px; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums}
+  .row{display:grid; grid-template-columns:2fr .8fr 1fr 1fr 1fr; gap:14px; align-items:center; padding:16px 4px; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums}
   .row.h{font-family:var(--font-head); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-block:12px}
   .row .co{font-family:var(--font-head); font-weight:500; font-size:17px; letter-spacing:.02em; text-decoration:none}
   .row .dim{color:var(--muted)}
@@ -106,6 +106,10 @@
   .prose img{max-width:100%; height:auto; border:1px solid var(--line)}
   .prose hr{border:0; border-top:1px solid var(--line); margin:40px 0}
   .prose code{font-size:.92em; background:var(--band); padding:1px 5px}
+  .glance{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin:0 0 8px}
+  .glance div{background:var(--bg); padding:14px 16px; min-width:0}
+  .glance .k{font-family:var(--font-head); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .glance .v{font-family:var(--font-head); font-weight:500; font-size:20px; margin-top:4px; font-variant-numeric:tabular-nums; line-height:1.25}
   .back{display:inline-block; margin-top:36px; font-family:var(--font-head); font-size:13px; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid var(--ink)}
 
   footer{background:var(--foot); color:var(--foot-ink)}
@@ -123,6 +127,7 @@
     .hero .wrap{align-items:flex-start; text-align:left; min-height:400px; padding-block:44px 150px}
     .row{grid-template-columns:1.4fr 1fr}
     .row .hide-s{display:none}
+    .glance{grid-template-columns:repeat(2,1fr)}
     nav{gap:18px}
     .mark b, .wm b{font-size:22px}
     section{padding-block:56px}
