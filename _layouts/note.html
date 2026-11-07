@@ -9,7 +9,7 @@ layout: default
       {% if page.subtitle %}<p class="sub">{{ page.subtitle }}</p>{% endif %}
       {% assign updated = page.last_updated | default: page.date %}
       <div class="note-meta">
-        Published {{ page.date | date: "%-d %B %Y" }}{% assign d1 = page.date | date: "%Y%m%d" %}{% assign d2 = updated | date: "%Y%m%d" %}{% if d1 != d2 %} · Last updated {{ updated | date: "%-d %B %Y" }}{% endif %}
+        Published {{ page.date | date: "%-d %B %Y" }}{% assign d1 = page.date | date: "%Y%m%d" %}{% assign d2 = updated | date: "%Y%m%d" %}{% if d1 != d2 %} · Updated {{ updated | date: "%-d %B %Y" }}{% endif %}
       </div>
     </div>
   </div>
