@@ -49,7 +49,7 @@ layout: default
     </article>
 
     <div class="cov" role="table" aria-label="Research write-ups">
-      <div class="row h" role="row"><span role="columnheader">Write-up</span><span role="columnheader">Ticker</span><span role="columnheader" class="hide-s">Published</span><span role="columnheader" class="hide-s">Last updated</span><span role="columnheader" class="hide-s">Status</span></div>
+      <div class="row h" role="row"><span role="columnheader">Write-up</span><span role="columnheader">Ticker</span><span role="columnheader" class="hide-s">Published</span><span role="columnheader" class="hide-s">Updated</span><span role="columnheader" class="hide-s">Status</span></div>
       <div class="row" role="row"><span class="co" role="cell">Elkem</span><span role="cell">ELK</span><span class="dim hide-s" role="cell">—</span><span class="dim hide-s" role="cell">—</span><span class="st on hide-s" role="cell">In progress</span></div>
       {% for note in site.posts %}
       <div class="row" role="row"><a class="co" role="cell" href="{{ note.url | relative_url }}">{{ note.title | split: ':' | first }}</a><span role="cell">{{ note.ticker }}</span><span class="dim hide-s" role="cell">{{ note.date | date: "%-d %b %Y" }}</span>{% assign updated = note.last_updated | default: note.date %}<span class="dim hide-s" role="cell">{{ updated | date: "%-d %b %Y" }}</span><span class="st hide-s" role="cell">{{ note.status | default: "Published" }}</span></div>
