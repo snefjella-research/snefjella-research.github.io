@@ -101,10 +101,10 @@ permalink: /about/
       pdfjsLib.getDocument({url:c.dataset.pdf, disableAutoFetch:true}).promise
         .then(function(doc){ return doc.getPage(1); })
         .then(function(page){
-          var w = c.parentNode.clientWidth * (window.devicePixelRatio || 1) * 1.2;
+          var w = c.parentNode.clientWidth * Math.max(2, window.devicePixelRatio || 1);
           var v = page.getViewport({scale:1}); var vp = page.getViewport({scale: w / v.width});
           c.width = vp.width; c.height = vp.height;
-          return page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise;
+          return page.render({canvasContext:c.getContext('2d'), viewport:vp, intent:'print'}).promise;
         })
         .then(function(){ c.classList.add('on'); })
         .catch(function(){});
